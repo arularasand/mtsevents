@@ -289,6 +289,12 @@
       text-transform: uppercase;
     }
 
+    .direction-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
     .directions {
       display: inline-flex;
       min-height: 64px;
@@ -302,6 +308,14 @@
       font-size: 18px;
       font-weight: 800;
       text-transform: uppercase;
+    }
+
+    .directions.google {
+      background: var(--red);
+    }
+
+    .directions.apple {
+      background: #111;
     }
 
     @media (max-width: 1300px) {
@@ -422,6 +436,7 @@
         padding: 24px;
       }
 
+      .direction-actions,
       .directions {
         width: 100%;
       }
@@ -495,7 +510,11 @@
             <li><strong>வழிகாட்டுதல்</strong> கீழே உள்ள பொத்தானை பயன்படுத்தி வழித்தடத்தைத் திறக்கலாம்.</li>
           </ul>
 
-          <a class="directions" href="https://www.openstreetmap.org/directions?to=42.3837%2C-83.3014" target="_blank" rel="noopener">Get Directions</a>
+          <div class="direction-actions">
+            <a class="directions google" href="https://www.google.com/maps/dir/?api=1&destination=Lee%20M.%20Thurston%20High%20School%2C%2026255%20Schoolcraft%2C%20Redford%20Township%2C%20MI%2048239" target="_blank" rel="noopener">Google Maps</a>
+            <a class="directions apple" href="https://maps.apple.com/?daddr=Lee%20M.%20Thurston%20High%20School%2C%2026255%20Schoolcraft%2C%20Redford%20Township%2C%20MI%2048239" target="_blank" rel="noopener">Apple Maps</a>
+            <a class="directions" href="https://www.openstreetmap.org/directions?to=42.3837%2C-83.3014" target="_blank" rel="noopener">OpenStreetMap</a>
+          </div>
         </aside>
       </div>
     </section>
