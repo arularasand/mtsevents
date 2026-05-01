@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>நிகழ்ச்சி இடம் | MTS Tamil Schools Event Page</title>
+  <title>Event Map | MTS Tamil Schools Event Page</title>
   <style>
     :root {
       --blue: #2d5be7;
@@ -77,16 +77,13 @@
       padding: 18px 30px;
       border-radius: 5px;
       color: #fff;
+      background: var(--gold);
       font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
       font-size: 26px;
       font-weight: 800;
       line-height: 1.08;
       text-align: center;
       text-transform: uppercase;
-    }
-
-    .cta.volunteer {
-      background: var(--gold);
     }
 
     .mainnav {
@@ -138,7 +135,6 @@
       display: inline-grid;
       place-items: center;
       color: #fff;
-      font-family: Georgia, serif;
       font-size: 43px;
       font-weight: 800;
       line-height: 1;
@@ -146,6 +142,7 @@
 
     .facebook {
       background: #3f5c9c;
+      font-family: Georgia, serif;
       padding-top: 5px;
     }
 
@@ -228,16 +225,10 @@
       border-left: 10px solid #7f828b;
     }
 
-    .location-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
-      gap: clamp(36px, 5vw, 90px);
-      align-items: start;
-    }
-
     .page-kicker {
       margin: 0 0 12px;
       color: var(--red);
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
       font-size: clamp(18px, 1.2vw, 24px);
       font-weight: 800;
       text-transform: uppercase;
@@ -251,69 +242,21 @@
     }
 
     .intro {
-      max-width: 920px;
-      margin: 0 0 34px;
+      max-width: 1100px;
+      margin: 0 0 36px;
       color: #55565d;
       font-size: clamp(19px, 1.45vw, 28px);
       line-height: 1.55;
     }
 
-    .map-frame {
-      width: 100%;
-      min-height: 560px;
-      border: 0;
-      border-radius: 8px;
-      box-shadow: 0 18px 46px rgba(45, 91, 231, .14);
-    }
-
-    .details-card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 34px;
-      background: #fff;
-    }
-
-    .details-card h2 {
-      margin: 0 0 20px;
-      color: var(--text);
-      font-size: clamp(28px, 2vw, 40px);
-      line-height: 1.15;
-    }
-
-    address {
-      margin: 0 0 28px;
-      color: #44464f;
-      font-size: clamp(19px, 1.2vw, 24px);
-      font-style: normal;
-      font-weight: 700;
-      line-height: 1.5;
-    }
-
-    .detail-list {
-      display: grid;
-      gap: 18px;
-      margin: 0 0 30px;
-      padding: 0;
-      list-style: none;
-      color: #55565d;
-      font-size: clamp(17px, 1vw, 20px);
-      line-height: 1.45;
-    }
-
-    .detail-list strong {
-      display: block;
-      color: var(--red);
-      font-size: 16px;
-      text-transform: uppercase;
-    }
-
-    .direction-actions {
+    .map-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      margin-bottom: 30px;
     }
 
-    .directions {
+    .map-button {
       display: inline-flex;
       min-height: 64px;
       align-items: center;
@@ -328,12 +271,33 @@
       text-transform: uppercase;
     }
 
-    .directions.google {
+    .map-button.secondary {
       background: var(--red);
     }
 
-    .directions.apple {
-      background: #111;
+    .event-map-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fbff;
+      box-shadow: 0 18px 46px rgba(45, 91, 231, .14);
+    }
+
+    .event-map {
+      display: block;
+      width: 100%;
+      min-width: 900px;
+      height: auto;
+    }
+
+    .map-note {
+      margin: 26px 0 0;
+      border-left: 8px solid var(--gold);
+      padding: 22px 28px;
+      background: #fff9dd;
+      color: #55565d;
+      font-size: clamp(17px, 1.1vw, 21px);
+      line-height: 1.5;
     }
 
     .site-footer {
@@ -374,10 +338,6 @@
       .socials {
         justify-content: center;
         padding-right: 0;
-      }
-
-      .location-layout {
-        grid-template-columns: 1fr;
       }
     }
 
@@ -469,17 +429,13 @@
         border-left-width: 7px;
       }
 
-      .map-frame {
-        min-height: 420px;
-      }
-
-      .details-card {
-        padding: 24px;
-      }
-
-      .direction-actions,
-      .directions {
+      .map-actions,
+      .map-button {
         width: 100%;
+      }
+
+      .event-map {
+        min-width: 760px;
       }
     }
   </style>
@@ -490,7 +446,7 @@
       <div class="topbar-inner">
         <img class="logo" src="assets/logo.png" alt="MTS Tamil Schools logo">
         <div class="brand">MTS Tamil<br>Schools Event Page</div>
-        <a class="cta volunteer" href="https://forms.gle/VuJQ4Yc5ovqUw2Lo8">Event Volunteer<br>Registration</a>
+        <a class="cta" href="https://forms.gle/VuJQ4Yc5ovqUw2Lo8">Event Volunteer<br>Registration</a>
       </div>
     </section>
 
@@ -519,46 +475,26 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="index.html">Home</a>
         <span class="crumb-arrow" aria-hidden="true"></span>
-        <span>Location</span>
+        <span>Event Map</span>
       </nav>
 
-      <div class="location-layout">
-        <section aria-labelledby="location-title">
-          <p class="page-kicker">MTS Tamil Schools Annual Day</p>
-          <h1 id="location-title">நிகழ்ச்சி இடம்</h1>
-          <p class="intro">ஆண்டுவிழா நடைபெறும் இடத்தின் முகவரி மற்றும் வரைபடம் கீழே கொடுக்கப்பட்டுள்ளது. வழிகாட்டுதலுக்கு OpenStreetMap வரைபடத்தைப் பயன்படுத்தலாம்.</p>
+      <p class="page-kicker">MTS Tamil Schools Annual Day</p>
+      <h1>நிகழ்ச்சி வரைபடம்</h1>
+      <p class="intro">ஆண்டுவிழா நடைபெறும் இடத்தில் மேடை, உணவு பகுதி, பதிவு மேசை, விருது பகுதி, தன்னார்வலர் உதவி மையம் போன்றவற்றை கண்டறிய இந்த நிகழ்ச்சி வரைபடத்தை பயன்படுத்தலாம்.</p>
 
-          <iframe
-            class="map-frame"
-            title="Lee M. Thurston High School map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-83.3074%2C42.3797%2C-83.2954%2C42.3877&amp;layer=mapnik&amp;marker=42.3837%2C-83.3014"
-            loading="lazy">
-          </iframe>
-        </section>
-
-        <aside class="details-card" aria-labelledby="address-title">
-          <h2 id="address-title">முகவரி</h2>
-          <address>
-            Lee M. Thurston High School<br>
-            26255 Schoolcraft<br>
-            Redford Township, MI 48239
-          </address>
-
-          <ul class="detail-list">
-            <li><strong>வருகை</strong> நிகழ்ச்சி தொடங்குவதற்கு முன் போதிய நேரத்துடன் வருக.</li>
-            <li><strong>வரைபடம்</strong> இலவச OpenStreetMap வரைபடம் இந்தப் பக்கத்தில் இணைக்கப்பட்டுள்ளது.</li>
-            <li><strong>வழிகாட்டுதல்</strong> கீழே உள்ள பொத்தானை பயன்படுத்தி வழித்தடத்தைத் திறக்கலாம்.</li>
-          </ul>
-
-          <div class="direction-actions">
-            <a class="directions google" href="https://www.google.com/maps/dir/?api=1&destination=Lee%20M.%20Thurston%20High%20School%2C%2026255%20Schoolcraft%2C%20Redford%20Township%2C%20MI%2048239" target="_blank" rel="noopener">Google Maps</a>
-            <a class="directions apple" href="https://maps.apple.com/?daddr=Lee%20M.%20Thurston%20High%20School%2C%2026255%20Schoolcraft%2C%20Redford%20Township%2C%20MI%2048239" target="_blank" rel="noopener">Apple Maps</a>
-            <a class="directions" href="https://www.openstreetmap.org/directions?to=42.3837%2C-83.3014" target="_blank" rel="noopener">OpenStreetMap</a>
-          </div>
-        </aside>
+      <div class="map-actions">
+        <a class="map-button" href="assets/eventmap.png" target="_blank" rel="noopener">Open Full Map</a>
+        <a class="map-button secondary" href="location.html">Event Location</a>
       </div>
+
+      <div class="event-map-wrap" aria-label="Event map image">
+        <img class="event-map" src="assets/eventmap.png" alt="MTS Tamil Schools Annual Day event map">
+      </div>
+
+      <p class="map-note">குறிப்பு: கைபேசியில் வரைபடத்தை முழுமையாகப் பார்க்க இடது வலமாக நகர்த்தலாம். இறுதி நிகழ்ச்சி ஏற்பாட்டின்படி வரைபட விவரங்கள் மாற்றப்படலாம்.</p>
     </section>
   </main>
+
   <footer class="site-footer">
     <p>&copy; 2026 MTS Tamil Schools Event Page. All rights reserved.</p>
   </footer>
