@@ -305,6 +305,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
+      margin-bottom: 64px;
       border-radius: 8px;
       padding: 28px;
       background: var(--blue);
@@ -604,6 +605,16 @@
       text-transform: uppercase;
     }
 
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 24px;
+      background: #fff;
+      color: #55565d;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+    }
+
     @media (max-width: 1300px) {
       .topbar-inner {
         grid-template-columns: 150px 1fr;
@@ -884,6 +895,25 @@
         <span>Annual Day</span>
       </nav>
 
+      <section class="countdown" aria-label="Annual Day countdown">
+        <div class="countdown-item">
+          <span class="countdown-value" id="countdown-days">0</span>
+          <span class="countdown-label">நாட்கள்</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="countdown-hours">0</span>
+          <span class="countdown-label">மணி</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="countdown-minutes">0</span>
+          <span class="countdown-label">நிமிடம்</span>
+        </div>
+        <div class="countdown-item">
+          <span class="countdown-value" id="countdown-seconds">0</span>
+          <span class="countdown-label">விநாடி</span>
+        </div>
+      </section>
+
       <div class="main-grid">
         <article class="annual-day">
           <section class="event-intro" aria-labelledby="annual-day-title">
@@ -906,25 +936,6 @@
             <div class="info-tile">
               <span class="info-label">இடம்</span>
               <div class="info-value">MTS Tamil Schools</div>
-            </div>
-          </section>
-
-          <section class="countdown" aria-label="Annual Day countdown">
-            <div class="countdown-item">
-              <span class="countdown-value" id="countdown-days">0</span>
-              <span class="countdown-label">நாட்கள்</span>
-            </div>
-            <div class="countdown-item">
-              <span class="countdown-value" id="countdown-hours">0</span>
-              <span class="countdown-label">மணி</span>
-            </div>
-            <div class="countdown-item">
-              <span class="countdown-value" id="countdown-minutes">0</span>
-              <span class="countdown-label">நிமிடம்</span>
-            </div>
-            <div class="countdown-item">
-              <span class="countdown-value" id="countdown-seconds">0</span>
-              <span class="countdown-label">விநாடி</span>
             </div>
           </section>
 
@@ -1099,6 +1110,9 @@
       </div>
     </section>
   </main>
+  <footer class="site-footer">
+    <p>&copy; 2026 MTS Tamil Schools Event Page. All rights reserved.</p>
+  </footer>
   <script>
     const eventDate = new Date("2026-05-30T13:00:00-04:00");
     const countdownParts = {
