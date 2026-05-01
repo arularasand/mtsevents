@@ -219,11 +219,157 @@
       align-items: start;
     }
 
+    .annual-day {
+      display: grid;
+      gap: 42px;
+    }
+
     .event-image {
       display: block;
       width: 100%;
       max-width: 1238px;
       height: auto;
+    }
+
+    .event-intro {
+      border-left: 8px solid var(--gold-deep);
+      padding-left: 30px;
+    }
+
+    .event-kicker {
+      margin: 0 0 12px;
+      color: var(--red);
+      font-size: clamp(18px, 1.2vw, 24px);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .event-title {
+      margin: 0;
+      color: #1550f0;
+      font-size: clamp(40px, 4vw, 82px);
+      line-height: 1;
+      font-weight: 800;
+    }
+
+    .event-copy {
+      max-width: 970px;
+      margin: 24px 0 0;
+      color: #55565d;
+      font-size: clamp(19px, 1.45vw, 28px);
+      line-height: 1.55;
+    }
+
+    .quick-info {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .info-tile {
+      min-height: 150px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 28px;
+      background: #fff;
+    }
+
+    .info-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .info-value {
+      color: var(--text);
+      font-size: clamp(20px, 1.55vw, 30px);
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .section-title {
+      margin: 0 0 24px;
+      color: var(--text);
+      font-size: clamp(30px, 2.5vw, 48px);
+      line-height: 1.1;
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .highlight {
+      min-height: 220px;
+      border-radius: 6px;
+      padding: 34px;
+      color: #fff;
+    }
+
+    .highlight h3 {
+      margin: 0 0 16px;
+      font-size: clamp(25px, 2vw, 34px);
+      line-height: 1.12;
+    }
+
+    .highlight p {
+      margin: 0;
+      font-size: clamp(17px, 1.2vw, 22px);
+      line-height: 1.45;
+    }
+
+    .highlight.trophy {
+      background: var(--gold-deep);
+    }
+
+    .highlight.lunch {
+      background: var(--red);
+    }
+
+    .highlight.certificate {
+      background: var(--blue);
+    }
+
+    .schedule {
+      display: grid;
+      gap: 16px;
+    }
+
+    .schedule-item {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: 24px;
+      align-items: start;
+      border: 1px solid var(--line);
+      border-left: 8px solid var(--blue);
+      border-radius: 6px;
+      padding: 26px 28px;
+      background: #fff;
+    }
+
+    .schedule-time {
+      color: var(--red);
+      font-size: clamp(20px, 1.5vw, 30px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .schedule-title {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-size: clamp(22px, 1.7vw, 34px);
+      line-height: 1.16;
+    }
+
+    .schedule-note {
+      margin: 0;
+      color: #55565d;
+      font-size: clamp(17px, 1.1vw, 22px);
+      line-height: 1.45;
     }
 
     .sidebar {
@@ -298,6 +444,38 @@
       text-transform: uppercase;
     }
 
+    .sidebar-panel {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 36px;
+      background: #fff;
+    }
+
+    .sidebar-panel h2 {
+      margin: 0 0 26px;
+      color: var(--text);
+      font-size: 30px;
+      line-height: 1.15;
+    }
+
+    .sidebar-list {
+      display: grid;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: #55565d;
+      font-size: 20px;
+      line-height: 1.35;
+    }
+
+    .sidebar-list strong {
+      display: block;
+      color: var(--red);
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 1300px) {
       .topbar-inner {
         grid-template-columns: 150px 1fr;
@@ -335,6 +513,11 @@
       .sidebar {
         max-width: 524px;
         gap: 32px;
+      }
+
+      .quick-info,
+      .highlights {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -399,6 +582,7 @@
 
       .content {
         padding-top: 42px;
+        padding-bottom: 42px;
       }
 
       .breadcrumb {
@@ -439,6 +623,27 @@
         font-size: 28px;
         margin-bottom: 32px;
       }
+
+      .annual-day {
+        gap: 34px;
+      }
+
+      .event-intro {
+        padding-left: 18px;
+        border-left-width: 6px;
+      }
+
+      .info-tile,
+      .highlight,
+      .sidebar-panel {
+        padding: 24px;
+      }
+
+      .schedule-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 22px;
+      }
     }
   </style>
 </head>
@@ -478,14 +683,103 @@
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="#">Home</a>
         <span class="crumb-arrow" aria-hidden="true"></span>
-        <a href="#">News</a>
+        <a href="#">Events</a>
         <span class="crumb-arrow" aria-hidden="true"></span>
-        <span>Farmington</span>
+        <span>Annual Day</span>
       </nav>
 
       <div class="main-grid">
-        <article>
+        <article class="annual-day">
           <img class="event-image" src="assets/event.png" alt="Tamil event poster for 2026">
+
+          <section class="event-intro" aria-labelledby="annual-day-title">
+            <p class="event-kicker">MTS Tamil Schools Annual Day</p>
+            <h1 class="event-title" id="annual-day-title">Annual Day 2026</h1>
+            <p class="event-copy">
+              Join us for a full day celebrating our students, teachers, volunteers, and families. The program includes stage performances, trophy distribution, certificate distribution, and lunch stalls.
+            </p>
+          </section>
+
+          <section class="quick-info" aria-label="Event details">
+            <div class="info-tile">
+              <span class="info-label">Date</span>
+              <div class="info-value">To be announced</div>
+            </div>
+            <div class="info-tile">
+              <span class="info-label">Time</span>
+              <div class="info-value">10:00 AM - 3:30 PM</div>
+            </div>
+            <div class="info-tile">
+              <span class="info-label">Location</span>
+              <div class="info-value">MTS Tamil Schools</div>
+            </div>
+          </section>
+
+          <section aria-labelledby="highlights-title">
+            <h2 class="section-title" id="highlights-title">Event Highlights</h2>
+            <div class="highlights">
+              <div class="highlight trophy">
+                <h3>Trophy Distribution</h3>
+                <p>Recognizing outstanding student achievements, competition winners, and special participation.</p>
+              </div>
+              <div class="highlight lunch">
+                <h3>Lunch Stalls</h3>
+                <p>Enjoy lunch, snacks, and refreshments from community food stalls during the afternoon break.</p>
+              </div>
+              <div class="highlight certificate">
+                <h3>Certificate Distribution</h3>
+                <p>Certificates will be presented to students for completion, participation, and Tamil learning milestones.</p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="schedule-title">
+            <h2 class="section-title" id="schedule-title">Annual Day Schedule</h2>
+            <div class="schedule">
+              <div class="schedule-item">
+                <div class="schedule-time">10:00 AM</div>
+                <div>
+                  <h3 class="schedule-title">Welcome and Opening Prayer</h3>
+                  <p class="schedule-note">Guest arrival, seating, Tamil Thai Vazhthu, and opening remarks.</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">10:30 AM</div>
+                <div>
+                  <h3 class="schedule-title">Student Cultural Programs</h3>
+                  <p class="schedule-note">Tamil speeches, songs, dances, skits, and classroom presentations.</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">12:00 PM</div>
+                <div>
+                  <h3 class="schedule-title">Trophy Distribution</h3>
+                  <p class="schedule-note">Awards for competitions, excellence, and special accomplishments.</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">12:45 PM</div>
+                <div>
+                  <h3 class="schedule-title">Lunch Stalls Open</h3>
+                  <p class="schedule-note">Lunch and refreshments available for families and volunteers.</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">2:00 PM</div>
+                <div>
+                  <h3 class="schedule-title">Certificate Distribution</h3>
+                  <p class="schedule-note">Certificates for students by grade level and program participation.</p>
+                </div>
+              </div>
+              <div class="schedule-item">
+                <div class="schedule-time">3:00 PM</div>
+                <div>
+                  <h3 class="schedule-title">Closing Remarks</h3>
+                  <p class="schedule-note">Vote of thanks, volunteer appreciation, and final announcements.</p>
+                </div>
+              </div>
+            </div>
+          </section>
         </article>
 
         <aside class="sidebar" aria-label="Event sidebar">
@@ -497,6 +791,15 @@
           <section class="events-card">
             <h2>All Events</h2>
             <a class="see-all" href="#">See All</a>
+          </section>
+
+          <section class="sidebar-panel" aria-labelledby="families-title">
+            <h2 id="families-title">For Families</h2>
+            <ul class="sidebar-list">
+              <li><strong>Arrive Early</strong> Please be seated before the opening prayer.</li>
+              <li><strong>Lunch</strong> Food stalls will be open during the scheduled lunch break.</li>
+              <li><strong>Awards</strong> Students receiving trophies or certificates should stay near their class group.</li>
+            </ul>
           </section>
         </aside>
       </div>
