@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>நிகழ்ச்சி இடம் | MTS Tamil Schools</title>
+  <style>
+    :root {
+      --blue: #2d5be7;
+      --gold: #e7c844;
+      --red: #c93530;
+      --text: #252525;
+      --muted: #777b86;
+      --line: #e5e5e5;
+      --max: 2300px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      font-family: "Noto Sans Tamil", "Latha", "Arial Unicode MS", "Montserrat", "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .topbar-inner,
+    .nav-inner,
+    .content {
+      width: min(100% - 48px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      min-height: 214px;
+      display: grid;
+      grid-template-columns: 260px 1fr auto auto;
+      align-items: center;
+      gap: 58px;
+      padding: 8px 0 22px;
+    }
+
+    .logo {
+      width: 154px;
+      height: 154px;
+      justify-self: center;
+      object-fit: contain;
+    }
+
+    .brand {
+      color: #1550f0;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(38px, 3vw, 56px);
+      font-weight: 800;
+      line-height: .94;
+    }
+
+    .cta {
+      width: 376px;
+      min-height: 114px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 30px;
+      border-radius: 5px;
+      color: #fff;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.08;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .cta.volunteer {
+      background: var(--gold);
+    }
+
+    .cta.student {
+      background: var(--red);
+      border: 2px solid #f3d35d;
+      box-shadow: 0 14px 0 rgba(201, 53, 48, .18);
+    }
+
+    .mainnav {
+      background: #fff;
+      border-bottom: 1px solid #ededed;
+    }
+
+    .nav-inner {
+      min-height: 154px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 3vw, 56px);
+      margin-left: 32px;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(18px, 1.45vw, 31px);
+      white-space: nowrap;
+    }
+
+    .chevron {
+      display: inline-block;
+      margin-left: 13px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #0b0b0b;
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-right: 10px;
+    }
+
+    .social {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: #fff;
+      font-family: Georgia, serif;
+      font-size: 43px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .facebook {
+      background: #3f5c9c;
+      padding-top: 5px;
+    }
+
+    .youtube {
+      background: #cf2e2c;
+      position: relative;
+    }
+
+    .youtube::before {
+      content: "";
+      width: 34px;
+      height: 24px;
+      border-radius: 6px;
+      background: #fff;
+      display: block;
+    }
+
+    .youtube::after {
+      content: "";
+      position: absolute;
+      border-left: 10px solid #cf2e2c;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      transform: translateX(2px);
+    }
+
+    .hero {
+      height: clamp(230px, 13.75vw, 400px);
+      background: url("assets/hero.png") center center / cover no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .content {
+      padding-top: 88px;
+      padding-bottom: 80px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 22px;
+      margin-bottom: 80px;
+    }
+
+    .breadcrumb a {
+      color: #7298ec;
+    }
+
+    .crumb-arrow {
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 10px solid #7f828b;
+    }
+
+    .location-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
+      gap: clamp(36px, 5vw, 90px);
+      align-items: start;
+    }
+
+    .page-kicker {
+      margin: 0 0 12px;
+      color: var(--red);
+      font-size: clamp(18px, 1.2vw, 24px);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      color: #1550f0;
+      font-size: clamp(42px, 4vw, 82px);
+      line-height: 1.05;
+    }
+
+    .intro {
+      max-width: 920px;
+      margin: 0 0 34px;
+      color: #55565d;
+      font-size: clamp(19px, 1.45vw, 28px);
+      line-height: 1.55;
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 560px;
+      border: 0;
+      border-radius: 8px;
+      box-shadow: 0 18px 46px rgba(45, 91, 231, .14);
+    }
+
+    .details-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 34px;
+      background: #fff;
+    }
+
+    .details-card h2 {
+      margin: 0 0 20px;
+      color: var(--text);
+      font-size: clamp(28px, 2vw, 40px);
+      line-height: 1.15;
+    }
+
+    address {
+      margin: 0 0 28px;
+      color: #44464f;
+      font-size: clamp(19px, 1.2vw, 24px);
+      font-style: normal;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 18px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+      color: #55565d;
+      font-size: clamp(17px, 1vw, 20px);
+      line-height: 1.45;
+    }
+
+    .detail-list strong {
+      display: block;
+      color: var(--red);
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .directions {
+      display: inline-flex;
+      min-height: 64px;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 5px;
+      background: var(--blue);
+      color: #fff;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1300px) {
+      .topbar-inner {
+        grid-template-columns: 150px 1fr;
+        gap: 22px;
+      }
+
+      .cta {
+        width: 100%;
+        min-height: 82px;
+        font-size: 20px;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px 0;
+      }
+
+      .menu {
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+
+      .socials {
+        justify-content: center;
+        padding-right: 0;
+      }
+
+      .location-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner,
+      .nav-inner,
+      .content {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .topbar-inner {
+        min-height: 0;
+        grid-template-columns: 92px 1fr;
+        padding: 16px 0;
+      }
+
+      .logo {
+        width: 84px;
+        height: 84px;
+      }
+
+      .brand {
+        font-size: 30px;
+      }
+
+      .cta {
+        grid-column: span 2;
+        min-height: 60px;
+        font-size: 16px;
+      }
+
+      .nav-inner {
+        min-height: 0;
+      }
+
+      .menu {
+        gap: 18px 22px;
+        font-size: 17px;
+      }
+
+      .social {
+        width: 46px;
+        height: 46px;
+        font-size: 29px;
+      }
+
+      .youtube::before {
+        width: 24px;
+        height: 17px;
+      }
+
+      .youtube::after {
+        border-left-width: 8px;
+        border-top-width: 5px;
+        border-bottom-width: 5px;
+      }
+
+      .hero {
+        height: 180px;
+      }
+
+      .content {
+        padding-top: 42px;
+        padding-bottom: 44px;
+      }
+
+      .breadcrumb {
+        margin-bottom: 44px;
+        font-size: 16px;
+        gap: 10px;
+      }
+
+      .crumb-arrow {
+        border-top-width: 6px;
+        border-bottom-width: 6px;
+        border-left-width: 7px;
+      }
+
+      .map-frame {
+        min-height: 420px;
+      }
+
+      .details-card {
+        padding: 24px;
+      }
+
+      .directions {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <section class="topbar" aria-label="MTS Tamil Schools header">
+      <div class="topbar-inner">
+        <img class="logo" src="assets/logo.png" alt="MTS Tamil Schools logo">
+        <div class="brand">MTS Tamil<br>Schools</div>
+        <a class="cta volunteer" href="#">Volunteer<br>Registration</a>
+        <a class="cta student" href="#">Student<br>Registration</a>
+      </div>
+    </section>
+
+    <nav class="mainnav" aria-label="Primary navigation">
+      <div class="nav-inner">
+        <div class="menu">
+          <a href="index.html">Home</a>
+          <a href="#">About Us <span class="chevron" aria-hidden="true"></span></a>
+          <a href="location.html">Locations <span class="chevron" aria-hidden="true"></span></a>
+          <a href="https://mitamilschools.org/mts-tamil-schools-registration-2025-26/">Registration</a>
+          <a href="#">Volunteering</a>
+          <a href="#">Resources <span class="chevron" aria-hidden="true"></span></a>
+        </div>
+        <div class="socials" aria-label="Social links">
+          <a class="social facebook" href="#" aria-label="Facebook">f</a>
+          <a class="social youtube" href="#" aria-label="YouTube"></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" role="img" aria-label="Students studying in a classroom"></div>
+
+    <section class="content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="crumb-arrow" aria-hidden="true"></span>
+        <span>Location</span>
+      </nav>
+
+      <div class="location-layout">
+        <section aria-labelledby="location-title">
+          <p class="page-kicker">MTS Tamil Schools Annual Day</p>
+          <h1 id="location-title">நிகழ்ச்சி இடம்</h1>
+          <p class="intro">ஆண்டுவிழா நடைபெறும் இடத்தின் முகவரி மற்றும் வரைபடம் கீழே கொடுக்கப்பட்டுள்ளது. வழிகாட்டுதலுக்கு OpenStreetMap வரைபடத்தைப் பயன்படுத்தலாம்.</p>
+
+          <iframe
+            class="map-frame"
+            title="Lee M. Thurston High School map"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-83.3074%2C42.3797%2C-83.2954%2C42.3877&amp;layer=mapnik&amp;marker=42.3837%2C-83.3014"
+            loading="lazy">
+          </iframe>
+        </section>
+
+        <aside class="details-card" aria-labelledby="address-title">
+          <h2 id="address-title">முகவரி</h2>
+          <address>
+            Lee M. Thurston High School<br>
+            26255 Schoolcraft<br>
+            Redford Township, MI 48239
+          </address>
+
+          <ul class="detail-list">
+            <li><strong>வருகை</strong> நிகழ்ச்சி தொடங்குவதற்கு முன் போதிய நேரத்துடன் வருக.</li>
+            <li><strong>வரைபடம்</strong> இலவச OpenStreetMap வரைபடம் இந்தப் பக்கத்தில் இணைக்கப்பட்டுள்ளது.</li>
+            <li><strong>வழிகாட்டுதல்</strong> கீழே உள்ள பொத்தானை பயன்படுத்தி வழித்தடத்தைத் திறக்கலாம்.</li>
+          </ul>
+
+          <a class="directions" href="https://www.openstreetmap.org/directions?to=42.3837%2C-83.3014" target="_blank" rel="noopener">Get Directions</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
