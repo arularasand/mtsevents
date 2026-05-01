@@ -178,6 +178,30 @@
       transform: translateX(2px);
     }
 
+    .instagram {
+      background: #d94377;
+      position: relative;
+    }
+
+    .instagram::before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      border: 5px solid #fff;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .instagram::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      transform: translate(11px, -11px);
+    }
+
     .hero {
       height: clamp(230px, 13.75vw, 400px);
       background: url("assets/hero.png") center center / cover no-repeat;
@@ -407,6 +431,19 @@
         border-bottom-width: 5px;
       }
 
+      .instagram::before {
+        width: 22px;
+        height: 22px;
+        border-width: 4px;
+        border-radius: 8px;
+      }
+
+      .instagram::after {
+        width: 5px;
+        height: 5px;
+        transform: translate(8px, -8px);
+      }
+
       .hero {
         height: 180px;
       }
@@ -465,8 +502,9 @@
           <a href="#">Resources <span class="chevron" aria-hidden="true"></span></a>
         </div>
         <div class="socials" aria-label="Social links">
-          <a class="social facebook" href="#" aria-label="Facebook">f</a>
+          <a class="social facebook" href="https://www.facebook.com/share/18v8AYquJ5/?mibextid=wwXIfr" aria-label="Facebook">f</a>
           <a class="social youtube" href="https://www.youtube.com/@MTSTamilSangam" aria-label="YouTube"></a>
+          <a class="social instagram" href="https://www.instagram.com/mtstamilschools?igsh=M2dyMGl2dXNrb3d2" aria-label="Instagram"></a>
         </div>
       </div>
     </nav>
