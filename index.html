@@ -336,39 +336,121 @@
 
     .schedule {
       display: grid;
-      gap: 16px;
+      gap: 0;
+      overflow: hidden;
+      border: 1px solid rgba(45, 91, 231, .2);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 85% 20%, rgba(255, 255, 255, .85) 0 2px, transparent 3px),
+        linear-gradient(135deg, rgba(49, 210, 229, .26), rgba(255, 255, 255, .94) 42%, rgba(45, 91, 231, .1));
+      background-size: 18px 18px, auto;
+      box-shadow: 0 18px 46px rgba(45, 91, 231, .1);
     }
 
-    .schedule-item {
+    .schedule-head,
+    .schedule-row {
       display: grid;
-      grid-template-columns: 190px 1fr;
-      gap: 24px;
-      align-items: start;
-      border: 1px solid var(--line);
-      border-left: 8px solid var(--blue);
-      border-radius: 6px;
-      padding: 26px 28px;
-      background: #fff;
+      grid-template-columns: 88px minmax(120px, 180px) minmax(0, 1fr);
+      align-items: stretch;
+    }
+
+    .schedule-head {
+      background: rgba(45, 91, 231, .95);
+      color: #fff;
+      font-size: 17px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .schedule-head span,
+    .schedule-cell {
+      padding: 16px 20px;
+      border-right: 1px solid rgba(255, 255, 255, .68);
+    }
+
+    .schedule-head span:last-child,
+    .schedule-cell:last-child {
+      border-right: 0;
+    }
+
+    .schedule-row {
+      background: rgba(255, 255, 255, .62);
+      border-top: 1px solid rgba(255, 255, 255, .8);
+    }
+
+    .schedule-row:nth-child(odd) {
+      background: rgba(255, 255, 255, .78);
+    }
+
+    .schedule-no,
+    .schedule-time {
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .schedule-no {
+      color: var(--blue);
+      font-size: 21px;
     }
 
     .schedule-time {
       color: var(--red);
-      font-size: clamp(20px, 1.5vw, 30px);
-      font-weight: 800;
+      font-size: clamp(17px, 1.25vw, 23px);
       line-height: 1.1;
+      white-space: nowrap;
     }
 
     .schedule-title {
-      margin: 0 0 8px;
+      margin: 0;
       color: var(--text);
-      font-size: clamp(22px, 1.7vw, 34px);
-      line-height: 1.16;
+      font-family: "Noto Sans Tamil", "Latha", "Arial Unicode MS", "Montserrat", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(20px, 1.55vw, 30px);
+      font-weight: 800;
+      line-height: 1.32;
     }
 
-    .schedule-note {
+    .schedule-title em {
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .schedule-subtitle {
+      display: block;
+      margin-top: 5px;
+      color: #62646c;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(15px, 1vw, 19px);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .event-services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .service-item {
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--gold-deep);
+      border-radius: 6px;
+      padding: 24px;
+      background: #fff;
+    }
+
+    .service-item h3 {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: clamp(21px, 1.6vw, 28px);
+      line-height: 1.15;
+    }
+
+    .service-item p {
       margin: 0;
       color: #55565d;
-      font-size: clamp(17px, 1.1vw, 22px);
+      font-size: clamp(16px, 1vw, 20px);
       line-height: 1.45;
     }
 
@@ -516,7 +598,8 @@
       }
 
       .quick-info,
-      .highlights {
+      .highlights,
+      .event-services {
         grid-template-columns: 1fr;
       }
     }
@@ -635,14 +718,64 @@
 
       .info-tile,
       .highlight,
+      .service-item,
       .sidebar-panel {
         padding: 24px;
       }
 
-      .schedule-item {
+      .schedule {
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+        gap: 14px;
+        overflow: visible;
+      }
+
+      .schedule-head {
+        display: none;
+      }
+
+      .schedule-row {
         grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 22px;
+        gap: 0;
+        border: 1px solid var(--line);
+        border-left: 6px solid var(--blue);
+        border-radius: 6px;
+        background: #fff;
+        overflow: hidden;
+      }
+
+      .schedule-cell {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 16px;
+        align-items: baseline;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 14px 18px;
+        text-align: left;
+      }
+
+      .schedule-cell:last-child {
+        border-bottom: 0;
+      }
+
+      .schedule-cell::before {
+        color: var(--muted);
+        content: attr(data-label);
+        font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .schedule-no,
+      .schedule-time {
+        text-align: left;
+      }
+
+      .schedule-title em {
+        white-space: normal;
       }
     }
   </style>
@@ -696,7 +829,7 @@
             <p class="event-kicker">MTS Tamil Schools Annual Day</p>
             <h1 class="event-title" id="annual-day-title">Annual Day 2026</h1>
             <p class="event-copy">
-              Join us for a full day celebrating our students, teachers, volunteers, and families. The program includes stage performances, trophy distribution, certificate distribution, and lunch stalls.
+              Join us for a full day celebrating our students, teachers, volunteers, and families. This 2026 mock program is based on the 2025 Annual Day schedule and includes stage performances, trophy distribution, certificate distribution, and lunch stalls.
             </p>
           </section>
 
@@ -707,7 +840,7 @@
             </div>
             <div class="info-tile">
               <span class="info-label">Time</span>
-              <div class="info-value">10:00 AM - 3:30 PM</div>
+              <div class="info-value">1:00 PM - 7:00 PM</div>
             </div>
             <div class="info-tile">
               <span class="info-label">Location</span>
@@ -736,47 +869,128 @@
           <section aria-labelledby="schedule-title">
             <h2 class="section-title" id="schedule-title">Annual Day Schedule</h2>
             <div class="schedule">
-              <div class="schedule-item">
-                <div class="schedule-time">10:00 AM</div>
-                <div>
-                  <h3 class="schedule-title">Welcome and Opening Prayer</h3>
-                  <p class="schedule-note">Guest arrival, seating, Tamil Thai Vazhthu, and opening remarks.</p>
-                </div>
+              <div class="schedule-head" aria-hidden="true">
+                <span>No.</span>
+                <span>Time</span>
+                <span>Program</span>
               </div>
-              <div class="schedule-item">
-                <div class="schedule-time">10:30 AM</div>
-                <div>
-                  <h3 class="schedule-title">Student Cultural Programs</h3>
-                  <p class="schedule-note">Tamil speeches, songs, dances, skits, and classroom presentations.</p>
-                </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">1</div>
+                <div class="schedule-cell schedule-time" data-label="Time">1:00 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">வரவேற்புரை<span class="schedule-subtitle">Welcome Address</span></h3></div>
               </div>
-              <div class="schedule-item">
-                <div class="schedule-time">12:00 PM</div>
-                <div>
-                  <h3 class="schedule-title">Trophy Distribution</h3>
-                  <p class="schedule-note">Awards for competitions, excellence, and special accomplishments.</p>
-                </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">2</div>
+                <div class="schedule-cell schedule-time" data-label="Time">1:05 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">முதல்வர் உரை<span class="schedule-subtitle">Principal's Address</span></h3></div>
               </div>
-              <div class="schedule-item">
-                <div class="schedule-time">12:45 PM</div>
-                <div>
-                  <h3 class="schedule-title">Lunch Stalls Open</h3>
-                  <p class="schedule-note">Lunch and refreshments available for families and volunteers.</p>
-                </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">3</div>
+                <div class="schedule-cell schedule-time" data-label="Time">1:13 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Pre school 1</em></h3></div>
               </div>
-              <div class="schedule-item">
-                <div class="schedule-time">2:00 PM</div>
-                <div>
-                  <h3 class="schedule-title">Certificate Distribution</h3>
-                  <p class="schedule-note">Certificates for students by grade level and program participation.</p>
-                </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">4</div>
+                <div class="schedule-cell schedule-time" data-label="Time">1:29 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>KG</em></h3></div>
               </div>
-              <div class="schedule-item">
-                <div class="schedule-time">3:00 PM</div>
-                <div>
-                  <h3 class="schedule-title">Closing Remarks</h3>
-                  <p class="schedule-note">Vote of thanks, volunteer appreciation, and final announcements.</p>
-                </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">5</div>
+                <div class="schedule-cell schedule-time" data-label="Time">1:57 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Grade 1</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">6</div>
+                <div class="schedule-cell schedule-time" data-label="Time">2:19 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Adv KG</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">7</div>
+                <div class="schedule-cell schedule-time" data-label="Time">2:29 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title"><em>FeTNA Competition</em> அறிமுகம்<span class="schedule-subtitle">FeTNA competition introduction</span></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">8</div>
+                <div class="schedule-cell schedule-time" data-label="Time">2:36 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Grade 2</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">9</div>
+                <div class="schedule-cell schedule-time" data-label="Time">3:04 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">ஆண்டு அறிக்கை<span class="schedule-subtitle">Annual report</span></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">10</div>
+                <div class="schedule-cell schedule-time" data-label="Time">3:10 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">எட்டாம் வகுப்பு மாணவர் பட்டமளிப்பு<span class="schedule-subtitle">Grade 8 graduation and certificate distribution</span></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">11</div>
+                <div class="schedule-cell schedule-time" data-label="Time">4:38 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">முதல்வர் உரை<span class="schedule-subtitle">Principal's address</span></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">12</div>
+                <div class="schedule-cell schedule-time" data-label="Time">4:43 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Grade 3</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">13</div>
+                <div class="schedule-cell schedule-time" data-label="Time">5:14 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">புத்தக வெளியீடு<span class="schedule-subtitle">Book release</span></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">14</div>
+                <div class="schedule-cell schedule-time" data-label="Time">5:17 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Grade 4</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">15</div>
+                <div class="schedule-cell schedule-time" data-label="Time">5:37 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Grade 5</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">16</div>
+                <div class="schedule-cell schedule-time" data-label="Time">5:56 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">பெற்றோர்களுக்கான கதைநேரம்<span class="schedule-subtitle">Story time for parents</span></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">17</div>
+                <div class="schedule-cell schedule-time" data-label="Time">5:59 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Grade 6</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">18</div>
+                <div class="schedule-cell schedule-time" data-label="Time">6:21 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">கலைநிகழ்ச்சி — <em>Grade 7</em></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">19</div>
+                <div class="schedule-cell schedule-time" data-label="Time">6:43 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title"><em>All Volunteers General Intro</em><span class="schedule-subtitle">Volunteer recognition and general introduction</span></h3></div>
+              </div>
+              <div class="schedule-row">
+                <div class="schedule-cell schedule-no" data-label="No.">20</div>
+                <div class="schedule-cell schedule-time" data-label="Time">6:53 PM</div>
+                <div class="schedule-cell" data-label="Program"><h3 class="schedule-title">நன்றியுரை<span class="schedule-subtitle">Vote of thanks</span></h3></div>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="services-title">
+            <h2 class="section-title" id="services-title">Also Happening</h2>
+            <div class="event-services">
+              <div class="service-item">
+                <h3>Trophy Distribution</h3>
+                <p>Trophies will be presented during award moments between stage programs.</p>
+              </div>
+              <div class="service-item">
+                <h3>Certificate Distribution</h3>
+                <p>Grade-level certificates and graduation recognition will be handled by class groups.</p>
+              </div>
+              <div class="service-item">
+                <h3>Lunch Stalls</h3>
+                <p>Lunch, snacks, and refreshments will be available from community stalls throughout the event.</p>
               </div>
             </div>
           </section>
