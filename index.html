@@ -301,6 +301,41 @@
       line-height: 1.2;
     }
 
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      border-radius: 8px;
+      padding: 28px;
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .countdown-item {
+      min-height: 118px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, .36);
+      border-radius: 6px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .countdown-value {
+      display: block;
+      font-size: clamp(34px, 3vw, 62px);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .countdown-label {
+      display: block;
+      margin-top: 10px;
+      font-size: clamp(15px, 1vw, 20px);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
     .section-title {
       margin: 0 0 24px;
       color: var(--text);
@@ -610,7 +645,8 @@
 
       .quick-info,
       .highlights,
-      .event-services {
+      .event-services,
+      .countdown {
         grid-template-columns: 1fr;
       }
     }
@@ -741,10 +777,15 @@
       }
 
       .info-tile,
+      .countdown,
       .highlight,
       .service-item,
       .sidebar-panel {
         padding: 24px;
+      }
+
+      .countdown-item {
+        min-height: 96px;
       }
 
       .schedule {
@@ -856,7 +897,7 @@
           <section class="quick-info" aria-label="Event details">
             <div class="info-tile">
               <span class="info-label">தேதி</span>
-              <div class="info-value">விரைவில் அறிவிக்கப்படும்</div>
+              <div class="info-value">May 30, 2026</div>
             </div>
             <div class="info-tile">
               <span class="info-label">நேரம்</span>
@@ -865,6 +906,25 @@
             <div class="info-tile">
               <span class="info-label">இடம்</span>
               <div class="info-value">MTS Tamil Schools</div>
+            </div>
+          </section>
+
+          <section class="countdown" aria-label="Annual Day countdown">
+            <div class="countdown-item">
+              <span class="countdown-value" id="countdown-days">0</span>
+              <span class="countdown-label">நாட்கள்</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="countdown-hours">0</span>
+              <span class="countdown-label">மணி</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="countdown-minutes">0</span>
+              <span class="countdown-label">நிமிடம்</span>
+            </div>
+            <div class="countdown-item">
+              <span class="countdown-value" id="countdown-seconds">0</span>
+              <span class="countdown-label">விநாடி</span>
             </div>
           </section>
 
@@ -1039,5 +1099,32 @@
       </div>
     </section>
   </main>
+  <script>
+    const eventDate = new Date("2026-05-30T13:00:00-04:00");
+    const countdownParts = {
+      days: document.getElementById("countdown-days"),
+      hours: document.getElementById("countdown-hours"),
+      minutes: document.getElementById("countdown-minutes"),
+      seconds: document.getElementById("countdown-seconds")
+    };
+
+    function updateCountdown() {
+      const now = new Date();
+      const remaining = Math.max(0, eventDate - now);
+      const totalSeconds = Math.floor(remaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+
+      countdownParts.days.textContent = days;
+      countdownParts.hours.textContent = String(hours).padStart(2, "0");
+      countdownParts.minutes.textContent = String(minutes).padStart(2, "0");
+      countdownParts.seconds.textContent = String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
