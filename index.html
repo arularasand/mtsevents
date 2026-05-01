@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MTS Tamil Schools</title>
+  <style>
+    :root {
+      --blue: #2d5be7;
+      --gold: #e7c844;
+      --gold-deep: #e9bf10;
+      --red: #c93530;
+      --text: #252525;
+      --muted: #8d8f98;
+      --line: #e5e5e5;
+      --search-blue: #6e95e0;
+      --max: 2300px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .topbar-inner,
+    .nav-inner,
+    .content {
+      width: min(100% - 48px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      min-height: 214px;
+      display: grid;
+      grid-template-columns: 260px 1fr auto auto;
+      align-items: center;
+      gap: 58px;
+      padding: 8px 0 22px;
+    }
+
+    .logo {
+      width: 154px;
+      height: 154px;
+      justify-self: center;
+      object-fit: contain;
+    }
+
+    .brand {
+      color: #1550f0;
+      font-size: clamp(38px, 3vw, 56px);
+      font-weight: 800;
+      line-height: .94;
+    }
+
+    .cta {
+      width: 376px;
+      min-height: 114px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 30px;
+      border: 0;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.08;
+      text-align: center;
+      text-transform: uppercase;
+      box-shadow: none;
+    }
+
+    .cta.volunteer {
+      background: var(--gold);
+    }
+
+    .cta.student {
+      background: var(--red);
+      border: 2px solid #f3d35d;
+      box-shadow: 0 14px 0 rgba(201, 53, 48, .18);
+    }
+
+    .mainnav {
+      background: #fff;
+      border-bottom: 1px solid #ededed;
+    }
+
+    .nav-inner {
+      min-height: 154px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 3vw, 56px);
+      margin-left: 32px;
+      font-size: clamp(18px, 1.45vw, 31px);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .chevron {
+      display: inline-block;
+      margin-left: 13px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #0b0b0b;
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-right: 10px;
+    }
+
+    .social {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: #fff;
+      font-size: 43px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .facebook {
+      background: #3f5c9c;
+      font-family: Georgia, serif;
+      padding-top: 5px;
+    }
+
+    .youtube {
+      background: #cf2e2c;
+      position: relative;
+    }
+
+    .youtube::before {
+      content: "";
+      width: 34px;
+      height: 24px;
+      border-radius: 6px;
+      background: #fff;
+      display: block;
+    }
+
+    .youtube::after {
+      content: "";
+      position: absolute;
+      border-left: 10px solid #cf2e2c;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      transform: translateX(2px);
+    }
+
+    .hero {
+      height: clamp(230px, 13.75vw, 400px);
+      background: url("assets/hero.png") center center / cover no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .content {
+      padding-top: 88px;
+      padding-bottom: 70px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 22px;
+      margin-bottom: 130px;
+    }
+
+    .breadcrumb a {
+      color: #7298ec;
+    }
+
+    .crumb-arrow {
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 10px solid #7f828b;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1238px) 524px;
+      gap: clamp(52px, 8.5vw, 300px);
+      align-items: start;
+    }
+
+    .event-image {
+      display: block;
+      width: 100%;
+      max-width: 1238px;
+      height: auto;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 96px;
+    }
+
+    .search {
+      display: grid;
+      grid-template-columns: 1fr 72px;
+      width: 100%;
+      height: 94px;
+    }
+
+    .search input {
+      width: 100%;
+      min-width: 0;
+      border: 0;
+      background: #eee;
+      color: #8e9097;
+      font: inherit;
+      font-size: 26px;
+      padding: 0 28px;
+      outline: none;
+    }
+
+    .search button {
+      border: 0;
+      background: var(--search-blue);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .search button::before {
+      content: "";
+      position: absolute;
+      left: 31px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 12px solid #fff;
+      border-top: 18px solid transparent;
+      border-bottom: 18px solid transparent;
+    }
+
+    .events-card {
+      min-height: 306px;
+      background: var(--gold);
+      padding: 76px 70px 68px;
+      color: #fff;
+    }
+
+    .events-card h2 {
+      margin: 0 0 52px;
+      font-size: 31px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+
+    .see-all {
+      display: inline-flex;
+      min-width: 225px;
+      min-height: 77px;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 28px;
+      background: #fff;
+      border-radius: 4px;
+      color: #55565d;
+      font-size: 25px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1300px) {
+      .topbar-inner {
+        grid-template-columns: 150px 1fr;
+        gap: 22px;
+      }
+
+      .cta {
+        width: 100%;
+        min-height: 82px;
+        font-size: 20px;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px 0;
+      }
+
+      .menu {
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+
+      .socials {
+        justify-content: center;
+        padding-right: 0;
+      }
+
+      .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        max-width: 524px;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner,
+      .nav-inner,
+      .content {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .topbar-inner {
+        min-height: 0;
+        grid-template-columns: 92px 1fr;
+        padding: 16px 0;
+      }
+
+      .logo {
+        width: 84px;
+        height: 84px;
+      }
+
+      .brand {
+        font-size: 30px;
+      }
+
+      .cta {
+        grid-column: span 2;
+        min-height: 60px;
+        font-size: 16px;
+      }
+
+      .nav-inner {
+        min-height: 0;
+      }
+
+      .menu {
+        gap: 18px 22px;
+        font-size: 17px;
+      }
+
+      .social {
+        width: 46px;
+        height: 46px;
+        font-size: 29px;
+      }
+
+      .youtube::before {
+        width: 24px;
+        height: 17px;
+      }
+
+      .youtube::after {
+        border-left-width: 8px;
+        border-top-width: 5px;
+        border-bottom-width: 5px;
+      }
+
+      .hero {
+        height: 180px;
+        background-position: center;
+      }
+
+      .content {
+        padding-top: 42px;
+      }
+
+      .breadcrumb {
+        margin-bottom: 44px;
+        font-size: 16px;
+        gap: 10px;
+      }
+
+      .crumb-arrow {
+        border-top-width: 6px;
+        border-bottom-width: 6px;
+        border-left-width: 7px;
+      }
+
+      .search {
+        height: 68px;
+        grid-template-columns: 1fr 58px;
+      }
+
+      .search input {
+        font-size: 20px;
+        padding: 0 18px;
+      }
+
+      .search button::before {
+        left: 24px;
+        border-left-width: 10px;
+        border-top-width: 14px;
+        border-bottom-width: 14px;
+      }
+
+      .events-card {
+        min-height: 220px;
+        padding: 42px 36px;
+      }
+
+      .events-card h2 {
+        font-size: 28px;
+        margin-bottom: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <section class="topbar" aria-label="MTS Tamil Schools header">
+      <div class="topbar-inner">
+        <img class="logo" src="assets/logo.png" alt="MTS Tamil Schools logo">
+        <div class="brand">MTS Tamil<br>Schools</div>
+        <a class="cta volunteer" href="#">Volunteer<br>Registration</a>
+        <a class="cta student" href="#">Student<br>Registration</a>
+      </div>
+    </section>
+
+    <nav class="mainnav" aria-label="Primary navigation">
+      <div class="nav-inner">
+        <div class="menu">
+          <a href="#">Home</a>
+          <a href="#">About Us <span class="chevron" aria-hidden="true"></span></a>
+          <a href="#">Locations <span class="chevron" aria-hidden="true"></span></a>
+          <a href="#">Registration</a>
+          <a href="#">Volunteering</a>
+          <a href="#">Resources <span class="chevron" aria-hidden="true"></span></a>
+        </div>
+        <div class="socials" aria-label="Social links">
+          <a class="social facebook" href="#" aria-label="Facebook">f</a>
+          <a class="social youtube" href="#" aria-label="YouTube"></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" role="img" aria-label="Students studying in a classroom"></div>
+
+    <section class="content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#">Home</a>
+        <span class="crumb-arrow" aria-hidden="true"></span>
+        <a href="#">News</a>
+        <span class="crumb-arrow" aria-hidden="true"></span>
+        <span>Farmington</span>
+      </nav>
+
+      <div class="main-grid">
+        <article>
+          <img class="event-image" src="assets/event.png" alt="Tamil event poster for 2026">
+        </article>
+
+        <aside class="sidebar" aria-label="Event sidebar">
+          <form class="search" action="#" method="get">
+            <input id="search" name="search" type="search" placeholder="Search" aria-label="Search">
+            <button type="submit" aria-label="Search"></button>
+          </form>
+
+          <section class="events-card">
+            <h2>All Events</h2>
+            <a class="see-all" href="#">See All</a>
+          </section>
+        </aside>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
