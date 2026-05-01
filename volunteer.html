@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>தன்னார்வலர்கள் | MTS Tamil Schools</title>
+  <style>
+    :root {
+      --blue: #2d5be7;
+      --gold: #e7c844;
+      --gold-deep: #e9bf10;
+      --red: #c93530;
+      --text: #252525;
+      --muted: #777b86;
+      --line: #e5e5e5;
+      --max: 2300px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: #fff;
+      font-family: "Noto Sans Tamil", "Latha", "Arial Unicode MS", "Montserrat", "Segoe UI", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .topbar-inner,
+    .nav-inner,
+    .content {
+      width: min(100% - 48px, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar-inner {
+      min-height: 214px;
+      display: grid;
+      grid-template-columns: 260px 1fr auto;
+      align-items: center;
+      gap: 58px;
+      padding: 8px 0 22px;
+    }
+
+    .logo {
+      width: 154px;
+      height: 154px;
+      justify-self: center;
+      object-fit: contain;
+    }
+
+    .brand {
+      color: #1550f0;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(38px, 3vw, 56px);
+      font-weight: 800;
+      line-height: .94;
+    }
+
+    .cta {
+      width: 376px;
+      min-height: 114px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 30px;
+      border-radius: 5px;
+      color: #fff;
+      background: var(--gold);
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.08;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .mainnav {
+      background: #fff;
+      border-bottom: 1px solid #ededed;
+    }
+
+    .nav-inner {
+      min-height: 154px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 3vw, 56px);
+      margin-left: 32px;
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(18px, 1.45vw, 31px);
+      white-space: nowrap;
+    }
+
+    .chevron {
+      display: inline-block;
+      margin-left: 13px;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #0b0b0b;
+      vertical-align: middle;
+      transform: translateY(-2px);
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-right: 10px;
+    }
+
+    .social {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: #fff;
+      font-size: 43px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .facebook {
+      background: #3f5c9c;
+      font-family: Georgia, serif;
+      padding-top: 5px;
+    }
+
+    .youtube {
+      background: #cf2e2c;
+      position: relative;
+    }
+
+    .youtube::before {
+      content: "";
+      width: 34px;
+      height: 24px;
+      border-radius: 6px;
+      background: #fff;
+      display: block;
+    }
+
+    .youtube::after {
+      content: "";
+      position: absolute;
+      border-left: 10px solid #cf2e2c;
+      border-top: 7px solid transparent;
+      border-bottom: 7px solid transparent;
+      transform: translateX(2px);
+    }
+
+    .instagram {
+      background: #d94377;
+      position: relative;
+    }
+
+    .instagram::before {
+      content: "";
+      width: 30px;
+      height: 30px;
+      border: 5px solid #fff;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .instagram::after {
+      content: "";
+      position: absolute;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #fff;
+      transform: translate(11px, -11px);
+    }
+
+    .hero {
+      height: clamp(230px, 13.75vw, 400px);
+      background: url("assets/hero.png") center center / cover no-repeat;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .content {
+      padding-top: 88px;
+      padding-bottom: 80px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 22px;
+      margin-bottom: 80px;
+    }
+
+    .breadcrumb a {
+      color: #7298ec;
+    }
+
+    .crumb-arrow {
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-bottom: 9px solid transparent;
+      border-left: 10px solid #7f828b;
+    }
+
+    .page-kicker {
+      margin: 0 0 12px;
+      color: var(--red);
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: clamp(18px, 1.2vw, 24px);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 24px;
+      color: #1550f0;
+      font-size: clamp(42px, 4vw, 82px);
+      line-height: 1.05;
+    }
+
+    .intro {
+      max-width: 1160px;
+      margin: 0 0 42px;
+      color: #55565d;
+      font-size: clamp(19px, 1.45vw, 28px);
+      line-height: 1.55;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 42px;
+    }
+
+    .summary-card {
+      min-height: 140px;
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--gold-deep);
+      border-radius: 6px;
+      padding: 24px;
+      background: #fff;
+    }
+
+    .summary-card strong {
+      display: block;
+      color: var(--red);
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .summary-card span {
+      display: block;
+      margin-top: 8px;
+      font-size: clamp(23px, 2vw, 36px);
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    .section-title {
+      margin: 0 0 24px;
+      color: var(--text);
+      font-size: clamp(30px, 2.5vw, 48px);
+      line-height: 1.1;
+    }
+
+    .volunteer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .volunteer-card {
+      display: grid;
+      gap: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      background: #fff;
+      box-shadow: 0 14px 34px rgba(45, 91, 231, .08);
+    }
+
+    .role {
+      margin: 0;
+      color: var(--blue);
+      font-size: clamp(22px, 1.65vw, 32px);
+      line-height: 1.18;
+    }
+
+    .person {
+      display: grid;
+      gap: 4px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .person:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .name {
+      color: var(--text);
+      font-size: clamp(18px, 1.2vw, 22px);
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .phone {
+      color: var(--red);
+      font-family: "Montserrat", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .note {
+      margin: 42px 0 0;
+      border-left: 8px solid var(--gold-deep);
+      padding: 24px 30px;
+      background: #fff9dd;
+      color: #55565d;
+      font-size: clamp(17px, 1.1vw, 21px);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 1300px) {
+      .topbar-inner {
+        grid-template-columns: 150px 1fr;
+        gap: 22px;
+      }
+
+      .cta {
+        width: 100%;
+        min-height: 82px;
+        font-size: 20px;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px 0;
+      }
+
+      .menu {
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+        white-space: normal;
+      }
+
+      .socials {
+        justify-content: center;
+        padding-right: 0;
+      }
+
+      .summary-grid,
+      .volunteer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner,
+      .nav-inner,
+      .content {
+        width: min(100% - 28px, var(--max));
+      }
+
+      .topbar-inner {
+        min-height: 0;
+        grid-template-columns: 92px 1fr;
+        padding: 16px 0;
+      }
+
+      .logo {
+        width: 84px;
+        height: 84px;
+      }
+
+      .brand {
+        font-size: 30px;
+      }
+
+      .cta {
+        grid-column: span 2;
+        min-height: 60px;
+        font-size: 16px;
+      }
+
+      .nav-inner {
+        min-height: 0;
+      }
+
+      .menu {
+        gap: 18px 22px;
+        font-size: 17px;
+      }
+
+      .social {
+        width: 46px;
+        height: 46px;
+        font-size: 29px;
+      }
+
+      .youtube::before {
+        width: 24px;
+        height: 17px;
+      }
+
+      .youtube::after {
+        border-left-width: 8px;
+        border-top-width: 5px;
+        border-bottom-width: 5px;
+      }
+
+      .instagram::before {
+        width: 22px;
+        height: 22px;
+        border-width: 4px;
+        border-radius: 8px;
+      }
+
+      .instagram::after {
+        width: 5px;
+        height: 5px;
+        transform: translate(8px, -8px);
+      }
+
+      .hero {
+        height: 180px;
+      }
+
+      .content {
+        padding-top: 42px;
+        padding-bottom: 44px;
+      }
+
+      .breadcrumb {
+        margin-bottom: 44px;
+        font-size: 16px;
+        gap: 10px;
+      }
+
+      .crumb-arrow {
+        border-top-width: 6px;
+        border-bottom-width: 6px;
+        border-left-width: 7px;
+      }
+
+      .summary-grid,
+      .volunteer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .volunteer-card,
+      .summary-card {
+        padding: 22px;
+      }
+
+      .note {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <section class="topbar" aria-label="MTS Tamil Schools header">
+      <div class="topbar-inner">
+        <img class="logo" src="assets/logo.png" alt="MTS Tamil Schools logo">
+        <div class="brand">MTS Tamil<br>Schools</div>
+        <a class="cta" href="volunteer.html">Event Volunteer<br>Registration</a>
+      </div>
+    </section>
+
+    <nav class="mainnav" aria-label="Primary navigation">
+      <div class="nav-inner">
+        <div class="menu">
+          <a href="index.html">Home</a>
+          <a href="#">About Us <span class="chevron" aria-hidden="true"></span></a>
+          <a href="location.html">Locations <span class="chevron" aria-hidden="true"></span></a>
+          <a href="https://mitamilschools.org/mts-tamil-schools-registration-2025-26/">Registration</a>
+          <a href="volunteer.html">Volunteering</a>
+        </div>
+        <div class="socials" aria-label="Social links">
+          <a class="social facebook" href="https://www.facebook.com/share/18v8AYquJ5/?mibextid=wwXIfr" aria-label="Facebook">f</a>
+          <a class="social youtube" href="https://www.youtube.com/@MTSTamilSangam" aria-label="YouTube"></a>
+          <a class="social instagram" href="https://www.instagram.com/mtstamilschools?igsh=M2dyMGl2dXNrb3d2" aria-label="Instagram"></a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero" role="img" aria-label="Students studying in a classroom"></div>
+
+    <section class="content">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="crumb-arrow" aria-hidden="true"></span>
+        <span>Volunteering</span>
+      </nav>
+
+      <p class="page-kicker">MTS Tamil Schools Annual Day</p>
+      <h1>தன்னார்வலர் குழு</h1>
+      <p class="intro">இது ஆண்டுவிழாவிற்கான மாதிரி தன்னார்வலர் பட்டியல். பெயர்கள் மற்றும் தொலைபேசி எண்கள் மாதிரி தகவல்களாக மட்டுமே சேர்க்கப்பட்டுள்ளன; உண்மையான தொடர்பு விவரங்களால் மாற்றிக்கொள்ளலாம்.</p>
+
+      <section class="summary-grid" aria-label="Volunteer summary">
+        <div class="summary-card">
+          <strong>குழுக்கள்</strong>
+          <span>18</span>
+        </div>
+        <div class="summary-card">
+          <strong>முன்னணி தன்னார்வலர்கள்</strong>
+          <span>36</span>
+        </div>
+        <div class="summary-card">
+          <strong>நிகழ்ச்சி நேரம்</strong>
+          <span>1 PM - 7 PM</span>
+        </div>
+        <div class="summary-card">
+          <strong>முக்கிய இடம்</strong>
+          <span>School Hall</span>
+        </div>
+      </section>
+
+      <section aria-labelledby="volunteer-title">
+        <h2 class="section-title" id="volunteer-title">பொறுப்புகள் மற்றும் தொடர்புகள்</h2>
+        <div class="volunteer-grid">
+          <article class="volunteer-card">
+            <h3 class="role">Event Coordination</h3>
+            <div class="person"><span class="name">Arun Kumar</span><a class="phone" href="tel:+1555010101">(555) 010-101</a></div>
+            <div class="person"><span class="name">Meena Rajan</span><a class="phone" href="tel:+1555010102">(555) 010-102</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Stage Management</h3>
+            <div class="person"><span class="name">Karthik Suresh</span><a class="phone" href="tel:+1555010103">(555) 010-103</a></div>
+            <div class="person"><span class="name">Priya Natarajan</span><a class="phone" href="tel:+1555010104">(555) 010-104</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Audio, Video, Lighting</h3>
+            <div class="person"><span class="name">Vikram Bala</span><a class="phone" href="tel:+1555010105">(555) 010-105</a></div>
+            <div class="person"><span class="name">Deepa Ravi</span><a class="phone" href="tel:+1555010106">(555) 010-106</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Student Check-in</h3>
+            <div class="person"><span class="name">Anitha Selvam</span><a class="phone" href="tel:+1555010107">(555) 010-107</a></div>
+            <div class="person"><span class="name">Sankar Mohan</span><a class="phone" href="tel:+1555010108">(555) 010-108</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Guest Registration</h3>
+            <div class="person"><span class="name">Lavanya Kumar</span><a class="phone" href="tel:+1555010109">(555) 010-109</a></div>
+            <div class="person"><span class="name">Ramesh Iyer</span><a class="phone" href="tel:+1555010110">(555) 010-110</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Backstage Support</h3>
+            <div class="person"><span class="name">Nisha Anand</span><a class="phone" href="tel:+1555010111">(555) 010-111</a></div>
+            <div class="person"><span class="name">Sathish Kumar</span><a class="phone" href="tel:+1555010112">(555) 010-112</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Trophy Distribution</h3>
+            <div class="person"><span class="name">Revathi Krishnan</span><a class="phone" href="tel:+1555010113">(555) 010-113</a></div>
+            <div class="person"><span class="name">Mohan Prabu</span><a class="phone" href="tel:+1555010114">(555) 010-114</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Certificate Distribution</h3>
+            <div class="person"><span class="name">Uma Shankar</span><a class="phone" href="tel:+1555010115">(555) 010-115</a></div>
+            <div class="person"><span class="name">Gayathri Mani</span><a class="phone" href="tel:+1555010116">(555) 010-116</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Lunch Stalls</h3>
+            <div class="person"><span class="name">Sridhar Venkatesh</span><a class="phone" href="tel:+1555010117">(555) 010-117</a></div>
+            <div class="person"><span class="name">Kala Murugan</span><a class="phone" href="tel:+1555010118">(555) 010-118</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Snack and Water Station</h3>
+            <div class="person"><span class="name">Bala Chandran</span><a class="phone" href="tel:+1555010119">(555) 010-119</a></div>
+            <div class="person"><span class="name">Hema Ramesh</span><a class="phone" href="tel:+1555010120">(555) 010-120</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Parking and Traffic</h3>
+            <div class="person"><span class="name">Prakash Raj</span><a class="phone" href="tel:+1555010121">(555) 010-121</a></div>
+            <div class="person"><span class="name">Dinesh Mani</span><a class="phone" href="tel:+1555010122">(555) 010-122</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Safety and First Aid</h3>
+            <div class="person"><span class="name">Dr. Shalini Rao</span><a class="phone" href="tel:+1555010123">(555) 010-123</a></div>
+            <div class="person"><span class="name">Muthu Vel</span><a class="phone" href="tel:+1555010124">(555) 010-124</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Photography</h3>
+            <div class="person"><span class="name">Ravi Narayan</span><a class="phone" href="tel:+1555010125">(555) 010-125</a></div>
+            <div class="person"><span class="name">Sneha Vivek</span><a class="phone" href="tel:+1555010126">(555) 010-126</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Video Recording</h3>
+            <div class="person"><span class="name">Ajay Balan</span><a class="phone" href="tel:+1555010127">(555) 010-127</a></div>
+            <div class="person"><span class="name">Kavitha Siva</span><a class="phone" href="tel:+1555010128">(555) 010-128</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Decoration</h3>
+            <div class="person"><span class="name">Malathi Arul</span><a class="phone" href="tel:+1555010129">(555) 010-129</a></div>
+            <div class="person"><span class="name">Senthil Kumar</span><a class="phone" href="tel:+1555010130">(555) 010-130</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Seating and Hall Support</h3>
+            <div class="person"><span class="name">Jaya Prakash</span><a class="phone" href="tel:+1555010131">(555) 010-131</a></div>
+            <div class="person"><span class="name">Renu Priya</span><a class="phone" href="tel:+1555010132">(555) 010-132</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Lost and Found</h3>
+            <div class="person"><span class="name">Sanjay Krish</span><a class="phone" href="tel:+1555010133">(555) 010-133</a></div>
+            <div class="person"><span class="name">Bhavani Elango</span><a class="phone" href="tel:+1555010134">(555) 010-134</a></div>
+          </article>
+          <article class="volunteer-card">
+            <h3 class="role">Cleanup and Closing</h3>
+            <div class="person"><span class="name">Vasanth Ravi</span><a class="phone" href="tel:+1555010135">(555) 010-135</a></div>
+            <div class="person"><span class="name">Charu Suresh</span><a class="phone" href="tel:+1555010136">(555) 010-136</a></div>
+          </article>
+        </div>
+      </section>
+
+      <p class="note">குறிப்பு: இந்தப் பக்கத்தில் உள்ள பெயர்கள் மற்றும் தொலைபேசி எண்கள் மாதிரி தகவல்கள். உண்மையான தன்னார்வலர் பட்டியல் கிடைத்த பிறகு இவற்றை மாற்றவும்.</p>
+    </section>
+  </main>
+</body>
+</html>
